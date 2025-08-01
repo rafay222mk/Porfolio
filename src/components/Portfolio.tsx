@@ -47,7 +47,7 @@ const Portfolio = () => {
       {/* Header/Navigation */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between px-6">
-          <h1 className="text-xl font-bold text-foreground">Abdul Rafay!</h1>
+          <h1 className="text-xl font-bold text-foreground">Abdul Rafay</h1>
           <div className="flex items-center space-x-6">
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#about" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">About</a>
