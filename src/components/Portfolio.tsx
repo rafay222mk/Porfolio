@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, MapPin, Calendar, ExternalLink, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar, ExternalLink, Github, Linkedin, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const Portfolio = () => {
+  const { theme, setTheme } = useTheme();
+
   const skills = [
     "Ruby on Rails", "HTML", "CSS", "Bootstrap", "JavaScript", "React",
     "MySQL", "PostgreSQL", "SQLite", "Heroku", "AWS", "Git", "GitHub"
@@ -40,40 +43,54 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header/Navigation */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center justify-between">
-          <h1 className="font-semibold">Abdul Rafay</h1>
-          <nav className="hidden md:flex items-center space-x-6">
-            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">About</a>
-            <a href="#experience" className="text-sm font-medium hover:text-primary transition-colors">Experience</a>
-            <a href="#skills" className="text-sm font-medium hover:text-primary transition-colors">Skills</a>
-            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-          </nav>
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-16 items-center justify-between px-6">
+          <h1 className="text-xl font-bold text-foreground">Abdul Rafay</h1>
+          <div className="flex items-center space-x-6">
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#about" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">About</a>
+              <a href="#experience" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">Experience</a>
+              <a href="#skills" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">Skills</a>
+              <a href="#contact" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">Contact</a>
+            </nav>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="ml-4"
+            >
+              {theme === "light" ? (
+                <Moon className="h-4 w-4" />
+              ) : (
+                <Sun className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-6">
-        <div className="container max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+      <section className="py-24 px-6">
+        <div className="container max-w-5xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
             Abdul Rafay
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+          <p className="text-2xl md:text-3xl text-muted-foreground mb-10 font-light">
             Software Engineer
           </p>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground mb-16 max-w-3xl mx-auto leading-relaxed">
             Ruby on Rails specialist building reliable and scalable backend systems. 
             Passionate about creating seamless digital experiences and efficient solutions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg">
-              <Mail className="mr-2 h-4 w-4" />
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button size="lg" className="text-base px-8 py-6">
+              <Mail className="mr-3 h-5 w-5" />
               Get In Touch
             </Button>
-            <Button variant="outline" size="lg">
-              <ExternalLink className="mr-2 h-4 w-4" />
+            <Button variant="outline" size="lg" className="text-base px-8 py-6">
+              <ExternalLink className="mr-3 h-5 w-5" />
               View Resume
             </Button>
           </div>
@@ -81,45 +98,49 @@ const Portfolio = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-muted/50">
+      <section id="about" className="py-24 px-6 bg-muted/30">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">About</h2>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">About Me</h2>
+          <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <Card>
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground leading-relaxed">
+              <Card className="border-border/50 shadow-sm">
+                <CardContent className="p-8">
+                  <p className="text-lg leading-relaxed text-muted-foreground">
                     I'm a Software Engineer with hands-on experience in Ruby on Rails, focusing on building reliable and scalable 
                     backend systems. I enjoy designing and developing robust APIs and seamlessly integrating third-party services 
-                    such as billing engines. With a solid understanding of infrastructure as code, I ensure smooth and efficient deployments. 
+                    such as billing engines.
+                  </p>
+                  <br />
+                  <p className="text-lg leading-relaxed text-muted-foreground">
+                    With a solid understanding of infrastructure as code, I ensure smooth and efficient deployments. 
                     I have worked on projects like Stitch, Provisioning, and Kadence billing engine, and take pride in writing clean code. 
                     I hold a Bachelor's degree in Computer Science.
                   </p>
                 </CardContent>
               </Card>
             </div>
-            <div className="space-y-4">
-              <h3 className="font-semibold mb-4">Contact Information</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-muted-foreground" />
-                  <span>+923312825222</span>
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold mb-6 text-foreground">Contact Information</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <span className="text-base">+923312825222</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4 text-muted-foreground" />
-                  <span>rafay222mk@gmail.com</span>
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <Mail className="h-5 w-5 text-primary" />
+                  <span className="text-base">rafay222mk@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
-                  <span>Pakistan</span>
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <span className="text-base">Pakistan</span>
                 </div>
               </div>
-              <div className="flex gap-2 pt-4">
-                <Button variant="outline" size="sm">
-                  <Github className="h-4 w-4" />
+              <div className="flex gap-3 pt-6">
+                <Button variant="outline" size="sm" className="p-3">
+                  <Github className="h-5 w-5" />
                 </Button>
-                <Button variant="outline" size="sm">
-                  <Linkedin className="h-4 w-4" />
+                <Button variant="outline" size="sm" className="p-3">
+                  <Linkedin className="h-5 w-5" />
                 </Button>
               </div>
             </div>
@@ -128,31 +149,31 @@ const Portfolio = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-6">
+      <section id="experience" className="py-24 px-6">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Work Experience</h2>
           <div className="space-y-8">
             {experience.map((job, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+              <Card key={index} className="border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold mb-1">{job.title}</h3>
-                      <p className="text-muted-foreground">{job.company}</p>
+                      <h3 className="text-2xl font-semibold mb-2 text-foreground">{job.title}</h3>
+                      <p className="text-lg text-muted-foreground">{job.company}</p>
                     </div>
-                    <div className="text-right mt-2 md:mt-0">
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <div className="text-right mt-4 md:mt-0">
+                      <div className="flex items-center gap-2 text-muted-foreground">
                         <Calendar className="h-4 w-4" />
-                        <span>{job.period}</span>
+                        <span className="text-base">{job.period}</span>
                       </div>
-                      <Badge variant="secondary" className="mt-1">{job.type}</Badge>
+                      <Badge variant="secondary" className="mt-2 text-sm">{job.type}</Badge>
                     </div>
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     {job.projects.map((project, projectIndex) => (
-                      <div key={projectIndex} className="border-l-2 border-muted pl-4">
-                        <h4 className="font-medium mb-1">{project.name}</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                      <div key={projectIndex} className="border-l-2 border-primary/20 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-foreground">{project.name}</h4>
+                        <p className="text-base text-muted-foreground leading-relaxed">{project.description}</p>
                       </div>
                     ))}
                   </div>
@@ -164,30 +185,30 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-muted/50">
+      <section id="skills" className="py-24 px-6 bg-muted/30">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Skills & Expertise</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Technical Skills</h3>
-                <div className="flex flex-wrap gap-2">
+            <Card className="border-border/50 shadow-sm">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold mb-6 text-foreground">Technical Skills</h3>
+                <div className="flex flex-wrap gap-3">
                   {skills.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="text-xs">
+                    <Badge key={index} variant="secondary" className="text-sm px-4 py-2 hover:bg-primary hover:text-primary-foreground transition-colors">
                       {skill}
                     </Badge>
                   ))}
                 </div>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Languages</h3>
-                <div className="space-y-3">
+            <Card className="border-border/50 shadow-sm">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold mb-6 text-foreground">Languages</h3>
+                <div className="space-y-4">
                   {languages.map((lang, index) => (
-                    <div key={index} className="flex justify-between items-center text-sm">
-                      <span>{lang.name}</span>
-                      <Badge variant="outline" className="text-xs">{lang.level}</Badge>
+                    <div key={index} className="flex justify-between items-center">
+                      <span className="text-base text-foreground">{lang.name}</span>
+                      <Badge variant="outline" className="text-sm">{lang.level}</Badge>
                     </div>
                   ))}
                 </div>
@@ -198,27 +219,28 @@ const Portfolio = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-20 px-6">
+      <section className="py-24 px-6">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Education</h2>
-          <Card>
-            <CardContent className="p-6">
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Education</h2>
+          <Card className="border-border/50 shadow-sm">
+            <CardContent className="p-8">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between">
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Lahore Garrison University</h3>
-                  <p className="text-muted-foreground mb-2">BS (Computer Science)</p>
-                  <p className="text-sm text-muted-foreground">
-                    Courses: Data Engineering, Internet Of Things, DSA, Design and Analysis of Algorithms, Operating 
-                    Systems, Distributed Computing, Web Development, Mobile Application, Computer Networks, Calculus 
-                    and Analytical Geometry, Probability and Statistics, Linear Algebra
+                  <h3 className="text-2xl font-semibold mb-2 text-foreground">Lahore Garrison University</h3>
+                  <p className="text-lg text-muted-foreground mb-4">Bachelor of Science (Computer Science)</p>
+                  <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
+                    <span className="font-medium">Relevant Coursework:</span> Data Engineering, Internet Of Things, Data Structures & Algorithms, 
+                    Design and Analysis of Algorithms, Operating Systems, Distributed Computing, Web Development, 
+                    Mobile Application Development, Computer Networks, Calculus and Analytical Geometry, 
+                    Probability and Statistics, Linear Algebra
                   </p>
                 </div>
-                <div className="text-right mt-4 md:mt-0">
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <div className="text-right mt-6 md:mt-0">
+                  <div className="flex items-center gap-2 text-muted-foreground">
                     <Calendar className="h-4 w-4" />
-                    <span>2019 - 2023</span>
+                    <span className="text-base">2019 - 2023</span>
                   </div>
-                  <Badge variant="secondary" className="mt-1">Pakistan</Badge>
+                  <Badge variant="secondary" className="mt-2">Pakistan</Badge>
                 </div>
               </div>
             </CardContent>
@@ -227,30 +249,30 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-muted/50">
+      <section id="contact" className="py-24 px-6 bg-muted/30">
         <div className="container max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-8 text-foreground">Let's Work Together</h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             I'm always interested in new opportunities and exciting projects. 
-            Let's discuss how we can work together.
+            Whether you have a project in mind or just want to connect, I'd love to hear from you.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg">
-              <Mail className="mr-2 h-4 w-4" />
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button size="lg" className="text-base px-8 py-6">
+              <Mail className="mr-3 h-5 w-5" />
               Send Email
             </Button>
-            <Button variant="outline" size="lg">
-              <Phone className="mr-2 h-4 w-4" />
-              Call
+            <Button variant="outline" size="lg" className="text-base px-8 py-6">
+              <Phone className="mr-3 h-5 w-5" />
+              Call Me
             </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 Abdul Rafay. All rights reserved.</p>
+      <footer className="py-12 px-6 border-t border-border">
+        <div className="container text-center">
+          <p className="text-muted-foreground">&copy; 2024 Abdul Rafay. All rights reserved.</p>
         </div>
       </footer>
     </div>
