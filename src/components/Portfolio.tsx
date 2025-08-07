@@ -87,10 +87,12 @@ const Portfolio = () => {
             Passionate about creating seamless digital experiences and efficient solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="#contact">
             <Button size="lg" className="text-base px-8 py-6">
               <Mail className="mr-3 h-5 w-5" />
               Get In Touch
             </Button>
+            </a>
             <Button variant="outline" size="lg" className="text-base px-8 py-6">
               <ExternalLink className="mr-3 h-5 w-5" />
               View Resume
