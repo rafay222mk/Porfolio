@@ -41,6 +41,8 @@ const Portfolio = () => {
       ]
     }
   ];
+  const mail = "mailto:rafay222mk@gmail.com"
+  const whatsapp = "https://wa.me/923312825222"
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -257,19 +259,19 @@ const Portfolio = () => {
             Whether you have a project in mind or just want to connect, I'd love to hear from you.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <a href={process.env.NEXT_PUBLIC_MAILTO}>
+          <a href={mail}>
             <Button size="lg" className="text-base px-8 py-6">
               <Mail className="mr-3 h-5 w-5" />
               Send Email
               </Button>
               </a>
-              <a href={process.env.NEXT_PUBLIC_WHATSAPPME} target="_blank" rel="noopener noreferrer">
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg" className="text-base px-8 py-6">
                 <Phone className="mr-3 h-5 w-5" />
                 Contact
                 </Button>
                 </a>
-
+                
           </div>
         </div>
       </section>
