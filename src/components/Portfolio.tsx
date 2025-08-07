@@ -257,19 +257,19 @@ const Portfolio = () => {
             Whether you have a project in mind or just want to connect, I'd love to hear from you.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <a href="mailto:rafay222mk@gmail.com">
+          <a href={process.env.mailto}>
             <Button size="lg" className="text-base px-8 py-6">
               <Mail className="mr-3 h-5 w-5" />
               Send Email
               </Button>
               </a>
-              <a href="https://wa.me/923312825222" target="_blank" rel="noopener noreferrer">
+              <a href={process.env.whatsappme} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg" className="text-base px-8 py-6">
                 <Phone className="mr-3 h-5 w-5" />
                 Contact
                 </Button>
                 </a>
-                
+
           </div>
         </div>
       </section>
